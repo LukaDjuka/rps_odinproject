@@ -48,13 +48,14 @@ function highlight_the_div(selected_option){
 }
 
 function confirmed(){
-    if (playerChoice === null) return;
-    else if (playerChoice === "Reset"){
+    if (playerChoice === "Reset"){
         man_score = 0;
         machine_score = 0;
+        document.querySelector("#man-score").textContent = `Man: ${man_score}`;
+        document.querySelector("#machine-score").textContent = `Machine: ${machine_score}`;
         highlight_the_div();
     }
-    else {
+    else if (playerChoice != null){
         machinePlay();
     }
 }
@@ -64,6 +65,7 @@ function machinePlay(){
     // const comp_div = document.querySelector("#comp-choice");
     // let para = document.createElement("p");
     // let comp_img;
+    console.log(comp_div.childNodes.length);
     if (comp_div.childNodes.length > 0){
         comp_div.removeChild(para);
         comp_div.removeChild(comp_img);
@@ -77,8 +79,8 @@ function machinePlay(){
     else{
         para.textContent = "Scissors";
     }
-    let score = updateScore(get_move)
-    if (score){
+    let tie = updateScore(get_move)
+    if (tie){
         para.textContent += "(Tie)";
     }
     comp_div.appendChild(para);
@@ -86,38 +88,53 @@ function machinePlay(){
 }
 
 function updateScore(computer_move){
+    let tie = null;
     if (computer_move === 0){ //Rock
         if (playerChoice === "Scissors"){
             machine_score++;
-            return 0;
+            tie = false;
         }
         else if (playerChoice === "Paper"){
             man_score++;
-            return 1;
+            tie = false;
+        }
+        else {
+            tie = true;
         }
     }
     else if (computer_move === 1){ //Paper
         if (playerChoice === "Rock"){
             machine_score++;
-            return 0;
+            tie = false;
         }
         else if (playerChoice === "Scissors"){
             man_score++;
-            return 1;
+            tie = false;
+        }
+        else{
+            tie = true;
         }
     }
     else if (computer_move === 2){ //Scissors
         if (playerChoice === "Paper"){
             machine_score++;
-            return 0;
+            tie = false;
+            
         }
         else if (playerChoice === "Rock"){
             man_score++;
-            return 1;
+            tie = false;
+        }
+        else{
+            tie = true;
         }
     }
     document.querySelector("#man-score").textContent = `Man: ${man_score}`;
     document.querySelector("#machine-score").textContent = `Machine: ${machine_score}`;
+    if (tie){
+        return 1;
+    }
+    return 0;
 }
 
 
