@@ -13,7 +13,7 @@ header {
 }
 
 #spacer {
-    height:175px;
+    height:150px;
 }
 
 #option-holder {
@@ -36,6 +36,7 @@ header {
 }
 
 #computer-spacer {
+    justify-content: center;
     margin: 50px;
     width: 100%;
     text-align: center;
@@ -57,4 +58,15 @@ footer {
 .human-selectable:hover {
     border: 2px solid rgba(190, 137, 56, 0.4);
     box-shadow: 2px 2px 5px 5px rgba(214, 181, 132, 0.4);
+}
+
+.selected-div{
+    border: 2px solid rgba(190, 137, 56, 0.4);
+    box-shadow: 2px 2px 5px 5px rgba(214, 181, 132, 0.4);
+}
+
+#play-anchor {
+    font-size: 24px;
+    text-decoration: none;
+    margin: 40px;
 }

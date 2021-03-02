@@ -10,21 +10,22 @@
         </header>
         <div id="spacer">&nbsp;</div>
         <div id="option-holder">
-            <div class="option-div human-selectable">
+            <div data-option="Rock" class="option-div human-selectable">
                 <p>Rock</p>
                 <img src="#">
             </div>
-            <div class="option-div human-selectable">
+            <div data-option="Paper" class="option-div human-selectable">
                 <p>Paper</p>
                 <img src="#">
             </div>
-            <div class="option-div human-selectable">
+            <div data-option="Scissors" class="option-div human-selectable">
                 <p>Scissors</p>
                 <img src="#">
             </div>
         </div>
         <div id="computer-selection">
             <div id="computer-spacer">
+                <p><a id="play-anchor" href="#">PLAY</a></p>
                 <p>Computer Picks...</p>
             </div>
             <div class="option-div" id="comp-choice">
@@ -34,7 +35,7 @@
         <footer>
             <p class="half-page">Man: / 5</p>
             <p class="half-page">Machine: / 5</p>
-            <div class="option-div human-selectable">
+            <div data-option="Reset" class="option-div human-selectable">
                 <p>Reset</p>
                 <img src="#">
             </div>
@@ -47,7 +48,7 @@
 
 
 
-
+        <script src="gamescript.js"></script>
 
         <script>
             function computerPlay(){
