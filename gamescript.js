@@ -1,8 +1,18 @@
 let playerChoice = null;
-let highlighted_div = null;
+
+let man_score = 0;
+let machine_score = 0;
+
+
+const comp_div = document.querySelector("#comp-choice");
+let para = document.createElement("p");
+let comp_img = document.createElement("img");
+
 
 let options = document.querySelectorAll(".human-selectable");
 options.forEach(option => option.addEventListener('click', setPlayerChoice))
+
+document.querySelector("#confirm-anchor").addEventListener('click', confirmed);
 
 
 function setPlayerChoice(e){
@@ -26,7 +36,6 @@ function setPlayerChoice(e){
 
 
 function highlight_the_div(selected_option){
-    let options = document.querySelectorAll(".human-selectable");
     options.forEach(option => {
         console.log(option.attributes);
         if (option.attributes["data-option"].value === selected_option){
@@ -38,11 +47,27 @@ function highlight_the_div(selected_option){
     })
 }
 
-function setComputerChoice(){
+function confirmed(){
+    if (playerChoice === null) return;
+    else if (playerChoice === "Reset"){
+        man_score = 0;
+        machine_score = 0;
+        highlight_the_div();
+    }
+    else {
+        machinePlay();
+    }
+}
+
+function machinePlay(){
     let get_move = Math.floor(Math.random() * 3);
-    const comp_div = document.querySelector("#comp-choice");
-    let para = document.createElement("p");
-    let comp_img;
+    // const comp_div = document.querySelector("#comp-choice");
+    // let para = document.createElement("p");
+    // let comp_img;
+    if (comp_div.childNodes.length > 0){
+        comp_div.removeChild(para);
+        comp_div.removeChild(comp_img);
+    }
     if (get_move === 0){
         para.textContent = "Rock";
     }
@@ -52,8 +77,47 @@ function setComputerChoice(){
     else{
         para.textContent = "Scissors";
     }
+    let score = updateScore(get_move)
+    if (score){
+        para.textContent += "(Tie)";
+    }
     comp_div.appendChild(para);
     comp_div.appendChild(comp_img);
+}
+
+function updateScore(computer_move){
+    if (computer_move === 0){ //Rock
+        if (playerChoice === "Scissors"){
+            machine_score++;
+            return 0;
+        }
+        else if (playerChoice === "Paper"){
+            man_score++;
+            return 1;
+        }
+    }
+    else if (computer_move === 1){ //Paper
+        if (playerChoice === "Rock"){
+            machine_score++;
+            return 0;
+        }
+        else if (playerChoice === "Scissors"){
+            man_score++;
+            return 1;
+        }
+    }
+    else if (computer_move === 2){ //Scissors
+        if (playerChoice === "Paper"){
+            machine_score++;
+            return 0;
+        }
+        else if (playerChoice === "Rock"){
+            man_score++;
+            return 1;
+        }
+    }
+    document.querySelector("#man-score").textContent = `Man: ${man_score}`;
+    document.querySelector("#machine-score").textContent = `Machine: ${machine_score}`;
 }
 
 
