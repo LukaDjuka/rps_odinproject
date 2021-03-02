@@ -22,6 +22,9 @@ header {
 }
 
 .option-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     height: 160px;
     width: 220px;
@@ -29,14 +32,13 @@ header {
     border-radius: 15px;
 }
 
-#computer-selection {
+#machine-selection {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-#computer-spacer {
-    justify-content: center;
+#machine-spacer {
     margin: 50px;
     width: 100%;
     text-align: center;
@@ -68,5 +70,9 @@ footer {
 #confirm-anchor {
     font-size: 24px;
     text-decoration: none;
-    margin: 40px;
+    color: black;
+}
+
+#confirmation-p {
+    margin-bottom: 70px;;
 }
