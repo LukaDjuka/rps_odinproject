@@ -29,7 +29,7 @@ function setPlayerChoice(e){
     }
     highlight_the_div(playerChoice);
 
-    // ERASE THIS LINE AFTER!
+    // Debugging line
     console.log(e.target.attributes["data-option"]);
 }
 
