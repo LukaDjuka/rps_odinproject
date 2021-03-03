@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock, Paper, Scissors - The Odin Project</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Rock, Paper, Scissors</h1>
+        </header>
+        <div id="spacer">&nbsp;</div>
+        <div id="option-holder">
+            <div data-option="Rock" class="option-div human-selectable">
+                <p>Rock</p>
+            </div>
+            <div data-option="Paper" class="option-div human-selectable">
+                <p>Paper</p>
+            </div>
+            <div data-option="Scissors" class="option-div human-selectable">
+                <p>Scissors</p>
+            </div>
+        </div>
+        <div id="machine-selection">
+            <div id="machine-spacer">
+                <p id="confirmation-p"><a id="confirm-anchor" href="#">CONFIRM</a></p>
+                <p>Machine Picks...</p>
+            </div>
+            <div class="option-div" id="machine-choice"></div>
+        </div>
+        <footer>
+            <p id="man-score" class="half-page">Man: 0</p>
+            <p id ="machine-score" class="half-page">Machine: 0</p>
+            <div data-option="Reset" class="option-div human-selectable">
+                <p>Reset</p>
+            </div>
+        </footer>
+
+        <script src="gamescript.js"></script>
+    </body>
+</html>
